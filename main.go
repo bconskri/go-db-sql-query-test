@@ -18,7 +18,6 @@ func main() {
 
 func selectClient(db *sql.DB, id int) (Client, error) {
 	cl := Client{}
-
 	row := db.QueryRow("SELECT id, fio, login, birthday, email FROM clients WHERE id = :id", sql.Named("id", id))
 	err := row.Scan(&cl.ID, &cl.FIO, &cl.Login, &cl.Birthday, &cl.Email)
 	if err != nil {
